@@ -1,0 +1,22 @@
+# OS / tooling
+.DS_Store
+node_modules/
+
+# gstack internal (QA reports, screenshots) — not part of the site
+.gstack/
+
+# Source & working files (kept locally, not deployed)
+assets/3d-plumming-logo-3D.png
+assets/3d-plumming-logo-banner.png
+assets/3d-plumming-logo-favicon.png
+assets/white_plumbing_van_with_logo_signage.svg
+assets/old-image0.jpg
+assets/old-softener.png
+assets/team-photo.jpg
+assets/Bathroom remodel.png
+assets/Commercial water treatment.png
+assets/Faucet & Fixture install.png
+assets/Kitchen Plumbing.png
+assets/drain cleaning.png
+assets/leak repair.png
+assets/repipe & pipe work.png
