@@ -71,10 +71,20 @@
     });
   });
 
-  // Mark current page's nav link active
-  var here = location.pathname.split("/").pop() || "index.html";
-  document.querySelectorAll(".nav__links a").forEach(function (a) {
-    var href = a.getAttribute("href");
-    if (href === here || (here === "" && href === "index.html")) a.classList.add("active");
+  // Mark current page's nav link active.
+  // Works for clean URLs (/services) on GitHub Pages and for /services.html locally.
+  var key = function (s) {
+    return (s || "").replace(/[#?].*$/, "").replace(/^\.\//, "").replace(/\/+$/, "").replace(/\.html$/, "");
+  };
+  var seg = key(location.pathname.split("/").pop()); // "" home, "services", "index"->"" below
+  if (seg === "index") seg = "";
+  var navLinks = document.querySelectorAll(".nav__links a");
+  var matched = false;
+  navLinks.forEach(function (a) {
+    var k = key(a.getAttribute("href"));
+    if (k !== "" && k === seg) { a.classList.add("active"); matched = true; }
   });
+  if (!matched) { // home (site root, /index, or the Pages project-root segment)
+    navLinks.forEach(function (a) { if (key(a.getAttribute("href")) === "") a.classList.add("active"); });
+  }
 })();
